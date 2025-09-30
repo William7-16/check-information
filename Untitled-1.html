@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Verificación de seguridad Warkhof</title>
+<style>
+  :root{
+    --bg:#f6f8fb;
+     --card:#ffffff;
+      --accent:#0a58ca;
+       --danger:#c82333;
+        --muted:#6b7280;
+    --radius:12px;
+     font-family:Inter, ui-sans-serif, system-ui,
+      -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  body{margin:0;background:linear-gradient(180deg, #eef3fb 0%, var(--bg) 100%); color:#111827}
+  .wrap{max-width:920px;margin:48px auto;padding:20px}
+  header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+  .logo{
+    width:62px;height:62px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2b6cb0);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;box-shadow:0 6px 18px rgba(10,88,202,0.12)
+  }
+  .org{font-size:18px;font-weight:700}
+  .sub{color:var(--muted);font-size:13px;margin-top:4px}
+
+  .card{background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:0 8px 30px rgba(15,23,42,0.06)}
+  h1{margin:0;font-size:20px}
+  p.lead{color:var(--muted);margin:8px 0 18px}
+
+  form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  label{font-size:13px;color:#374151;display:block;margin-bottom:6px}
+  input, select{width:100%;padding:10px 12px;border:1px solid #e6e9ef;border-radius:8px;font-size:14px;outline:none}
+  input:focus, select:focus{box-shadow:0 0 0 4px rgba(10,88,202,0.06);border-color:var(--accent)}
+  .full{grid-column:1/-1}
+  .muted-note{font-size:13px;color:var(--muted);margin-top:6px}
+
+  .actions{display:flex;gap:10px;align-items:center;margin-top:14px}
+  .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+  .btn-primary{background:var(--accent);color:white}
+  .btn-ghost{background:#fff;border:1px solid #e6e9ef;color:#374151}
+.pp {background: #fff;}
+
+  .privacy{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.4}
+  .footer{margin-top:18px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+
+  /* PROP overlay */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:999;opacity:0;pointer-events:none;transition:all .18s ease}
+  .overlay.show{opacity:1;pointer-events:auto}
+  .modal{background:white;border-radius:14px;padding:20px;max-width:720px;width:100%;box-shadow:0 20px 60px rgba(2,6,23,0.4)}
+  .modal h2{margin:0 0 8px;color:var(--danger)}
+  .modal p{margin:0 0 12px;color:#111827}
+  .modal .actions{justify-content:flex-end;margin-top:10px}
+  .warning-badge{display:inline-block;background:var(--danger);color:white;padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px;margin-bottom:8px}
+
+  @media (max-width:640px){
+    form{grid-template-columns:1fr}
+    .wrap{margin:18px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Warkhof</div>
+      <div>
+        <div class="org">Warkhof — Equipo de Seguridad</div>
+        <div class="sub">Contacto: soporte@warkhof.com</div>
+      </div>
+    </header>
+
+    <main class="card" role="main" aria-labelledby="titulo">
+      <h1 id="titulo">Verificación de seguridad</h1>
+      <p class="lead">Hemos detectado actividad inusual en su cuenta y, para protegerla, solicitamos una breve verificación.</p>
+
+      <form id="fakeForm" autocomplete="off" novalidate>
+        <div class="full">
+          <label for="fullname">Nombre completo</label>
+          <input id="fullname" name="fullname" type="text" placeholder="Ej. Ana Pérez" />
+        </div>
+
+        <div>
+          <label for="docType">Tipo de documento</label>
+          <select id="docType" name="docType" aria-label="Tipo de documento">
+            <option value="">Seleccionar</option>
+            <option>Usuario</option>
+            <option>Correo</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="docNumber">Nombre de Usuario</label>
+          <input id="docNumber" name="docNumber" type="text" placeholder="— — — — — — —" />
+        </div>
+
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="nombre@ejemplo.com" />
+        </div>
+
+        <div>
+          <label for="phone">Teléfono (opcional)</label>
+          <input id="phone" name="phone" type="tel" placeholder="+503 7XXX XXXX" />
+        </div>
+
+        <div class="full muted-note">
+          <strong>Nota:</strong> Esta página esta creada para fines de demostracion.
+        </div>
+
+        <div class="full actions">
+          <button type="button" class="btn btn-ghost" id="verifyOfficial">Verificar por canales oficiales</button>
+          <a type="button"  class="btn btn-primary" id="verifyOfficial" href="Gracias html.html" style="text-decoration: none;">Enviar verificación</a>
+          <button type="submit" class="btn btn-primary pp"></button></div> 
+
+        <div class="privacy full">
+          <strong>Privacidad:</strong> Sus datos se usan exclusivamente para la verificación y según la política de la organización. <em>En este sitio demo, la información no se guarda ni se transmite.</em>
+        </div>
+
+        <div class="footer full">
+  <div>
+    Si tienes dudas, contacta a Atención al Cliente: 
+    <a href="mailto:soporte@warkhof.com">soporte@warkhof.com</a>
+  </div>
+  <div style="font-size:12px;color:var(--muted)">Ref: 0000-VER-STD</div>
+</div>
+      </form>
+    </main>
+
+    </div>
+<script>
+  // Seguridad: el "submit" no hace nada más que mostrar el modal PROP.
+  const form = document.getElementById('fakeForm');
+  const overlay = document.getElementById('overlay');
+  const close = document.getElementById('closeModal');
+  const verifyOfficial = document.getElementById('verifyOfficial');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showPropModal();
+  });
+
+  verifyOfficial.addEventListener('click', () => {
+    // Simula redirección segura: abre nueva pestaña a URL genérica (vacía) - evita apuntar a web real
+    window.open('about:blank', '_blank');
+    // Muestra también el modal para recordar que es prop
+    showPropModal();
+  });
+
+  close.addEventListener('click', () => hidePropModal());
+
+  function showPropModal(){
+    overlay.classList.add('show');
+    overlay.setAttribute('aria-hidden','false');
+    // opcional: vaciar campos para evitar datos reales por accidente
+    document.getElementById('fullname').value = '';
+    document.getElementById('docNumber').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('docType').selectedIndex = 0;
+  }
+  function hidePropModal(){
+    overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden','true');
+  }
+
+  // Atajo: ESC cierra modal
+  document.addEventListener('keydown', (ev) => {
+    if(ev.key === 'Escape' && overlay.classList.contains('show')) hidePropModal();
+  });
+</script>
+<script src="script.js"></script>
+</body>
+</html>
